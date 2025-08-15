@@ -1,6 +1,11 @@
 # randoplayer
 
-Plays random video content on a Raspberry Pi. Lightweight enough that I used it on a Raspberry Pi 1.
+Plays random video content on a Raspberry Pi. 
+* Small requirements: vlc, python, python-flask.
+* Lightweight enough that I used it on a Raspberry Pi 1.
+* Basic functionality: Play random stuff, no skipping no rewinding, just like a real TV station.
+   * Commercials supported too
+   * "TV guide" available over port 8080
 
 ## Requirements
 
@@ -77,6 +82,9 @@ The expected folder structure for media to live in is:
 ```
 /mnt/tvdrive/                   # Mounted USB drive
 └── tv/                         # Root folder for media content
+    ├── commercials/            # Special dir from which to fetch commercials from (exactly 1 file will play after every episode)
+    │   ├── 1992 beer ad.mp4
+    │   ├── Rocca Bros.mp4
     ├── ShowA/                  # Each subfolder is a "show"
     │   ├── episode1.mp4
     │   ├── episode2.avi
