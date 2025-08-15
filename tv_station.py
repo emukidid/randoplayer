@@ -43,17 +43,35 @@ HTML_TEMPLATE = """
 """
 
 # === SCHEDULE GENERATION ===
+def get_commercials():
+    commercials_dir = os.path.join(MEDIA_ROOT, "commercials")
+    if not os.path.isdir(commercials_dir):
+        return []
+    return [os.path.join(commercials_dir, f) for f in os.listdir(commercials_dir)
+            if f.lower().endswith(('.mp4', '.avi', '.mkv'))]
+
 def generate_schedule():
     schedule = []
     for show in os.listdir(MEDIA_ROOT):
         show_path = os.path.join(MEDIA_ROOT, show)
-        if os.path.isdir(show_path):
-            episodes = [os.path.join(show_path, ep) for ep in os.listdir(show_path) if ep.lower().endswith(('.mp4', '.avi', '.mkv'))]
+        if os.path.isdir(show_path) and show != "commercials":
+            episodes = [os.path.join(show_path, ep) for ep in os.listdir(show_path)
+                        if ep.lower().endswith(('.mp4', '.avi', '.mkv'))]
             schedule.extend(episodes)
+
     random.shuffle(schedule)
+    commercials = get_commercials()
+
+    # Interleave commercials
+    final_schedule = []
+    for episode in schedule:
+        final_schedule.append(episode)
+        if commercials:
+            final_schedule.append(random.choice(commercials))
+
     with open(SCHEDULE_FILE, "w") as f:
-        json.dump(schedule, f)
-    return schedule
+        json.dump(final_schedule, f)
+    return final_schedule
 
 # === PLAYER THREAD ===
 def play_schedule():
