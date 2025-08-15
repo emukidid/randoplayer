@@ -1,6 +1,6 @@
 # randoplayer
 
-Plays random video content on a Raspberry Pi
+Plays random video content on a Raspberry Pi. Lightweight enough that I used it on a Raspberry Pi 1.
 
 ## Requirements
 
@@ -89,6 +89,9 @@ The expected folder structure for media to live in is:
         └── part2.mkv
 
 ```
+
+### Future functionality
+* Framebuffer overlay of "what's next" or "currently playing" to come up.
 
 ### Troubleshooting
 
