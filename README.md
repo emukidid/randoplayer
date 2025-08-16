@@ -75,6 +75,9 @@ sudo systemctl start pitv
 ```
 Your pi should now start playing random episodes of stuff! - go to http\://\<your\_pi>:8080/ to see the playlist.
 
+<img width="1023" height="714" alt="image" src="https://github.com/user-attachments/assets/6cbce768-fe47-4021-9029-f25b1f3a3886" />
+
+
 ### Folder structure
 
 The expected folder structure for media to live in is:
