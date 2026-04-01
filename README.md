@@ -45,7 +45,9 @@ Plays random video content on a Raspberry Pi.
 
 3. `sudo apt install vlc -y`
 
-4. Set up the service by writing this file with these contents:\
+4. `sudo apt install ffmpeg -y`
+
+5. Set up the service by writing this file with these contents:\
    `sudo nano /etc/systemd/system/pitv.service`
 
 ```
